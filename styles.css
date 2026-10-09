@@ -1,0 +1,205 @@
+/* ---------- Base ---------- */
+:root {
+  --navy: #12304a;
+  --navy-soft: #1c4466;
+  --blue: #2a7fba;
+  --sky: #add9e6;
+  --paper: #ffffff;
+  --mist: #f1f6fa;
+  --ink: #1d2733;
+  --muted: #5a6b7b;
+  --line: #d7e2eb;
+  --nav-h: 56px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 { line-height: 1.25; margin: 0 0 0.6em; }
+h1 { font-size: clamp(2rem, 6vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 1.9rem); color: var(--navy); }
+h3 { font-size: 1.2rem; color: var(--navy-soft); margin-top: 1.6em; }
+p  { font-size: 1.05rem; margin: 0 0 1em; }
+
+a { color: var(--blue); }
+a:focus-visible, .button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--nav-h);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  background: var(--navy);
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+nav a {
+  color: #e8f1f7;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+nav a:hover { background: var(--navy-soft); }
+nav a:focus-visible { outline-color: var(--sky); }
+
+/* ---------- Home / hero ---------- */
+#home {
+  text-align: center;
+  padding: 56px 20px 64px;
+  background: var(--navy);
+  color: #fff;
+}
+#home h1 { margin-bottom: 24px; }
+#home p { max-width: 640px; margin-left: auto; margin-right: auto; margin-bottom: 0.4em; color: #dbe9f3; }
+#home p:first-of-type { margin-top: 28px; }
+
+/* Oval photo frame */
+.photo {
+  width: 190px;
+  height: 250px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 5px solid var(--sky);
+  overflow: hidden;
+  background: var(--navy-soft);
+  position: relative;
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+/* Placeholder shown until photo.jpg exists */
+.photo.empty img { display: none; }
+.photo.empty::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 26%;
+  width: 34%;
+  height: 26%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--sky);
+  opacity: 0.8;
+}
+.photo.empty::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 66%;
+  height: 50%;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 0 0;
+  background: var(--sky);
+  opacity: 0.8;
+}
+
+/* ---------- Sections ---------- */
+section { padding: 72px 20px; }
+section > * { max-width: 760px; margin-left: auto; margin-right: auto; }
+section:nth-of-type(odd)  { background: var(--mist); }
+section:nth-of-type(even) { background: var(--paper); }
+
+section > h2 { text-align: center; }
+section > h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  background: var(--blue);
+}
+section > h2 { margin-bottom: 1.6em; }
+
+/* ---------- Skills ---------- */
+#skills ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+#skills li {
+  font-size: 1.05rem;
+  padding: 10px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* ---------- Projects ---------- */
+#projects .cards {
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+#projects .card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+}
+#projects .card h3 { margin-top: 0; font-size: 1.3rem; }
+#projects .card p { margin-bottom: 0; font-size: 1rem; }
+
+/* ---------- Achievements ---------- */
+#achievements ul { padding-left: 1.2em; }
+#achievements li { font-size: 1.05rem; margin-bottom: 12px; }
+
+/* ---------- Contact ---------- */
+#contact { text-align: center; }
+#contact p { font-size: 1.05rem; }
+#contact a { text-decoration: none; overflow-wrap: anywhere; }
+#contact a:hover { text-decoration: underline; }
+.button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 28px;
+  background: var(--blue);
+  color: #fff !important;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+.button:hover { background: var(--navy-soft); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  nav { justify-content: flex-start; }
+  section { padding: 48px 16px; }
+  #home { padding: 40px 16px 48px; }
+  .photo { width: 160px; height: 210px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
